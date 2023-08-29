@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Head -->
+<head>
+    <!-- Page Meta Tags-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Google Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@200;300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS -->
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/theme.bundle.css')}}" />
+    <!-- Fix for custom scrollbar if JS is disabled-->
+    <noscript>
+        <style>
+          /**
+          * Reinstate scrolling for non-JS clients
+          */
+          .simplebar-content-wrapper {
+            overflow: auto;
+          }
+        </style>
+    </noscript>
+
+    <!-- Page Title -->
+    <title> Sirius Net</title>
+    
+</head>
+<body class="">
+
+  <!-- Main Section-->
+  <section class="d-flex justify-content-center align-items-start vh-100 py-5 px-3 px-md-0">
+
+    <!-- Login Form-->
+    <div class="d-flex flex-column w-100 align-items-center">
+
+      <!-- Logo-->
+      
+      <div class="shadow-lg rounded p-4 p-sm-5 bg-white form">
+        <h5 class="fw-bold text-muted">Create Account</h5>
+        <p>{{course}}</p>
+
+        <!-- Login Form-->
+        <form class="mt-4" action="/submit" method="POST">
+            {% if course == 'networking' %}
+            <div class="form-group">
+                <label for="experience">Networking Experience:</label>
+                <input type="text" class="form-control form-control-light"  id="experience" name="experience" required>
+            </div>
+            {% elif course == 'cybersecurity' %}
+            <div class="form-group">
+                <label for="interest">Cybersecurity Interest:</label>
+                <input type="text" class="form-control form-control-light" id="interest" name="interest" required>
+            </div>
+            {% elif course == 'programming' %}
+            <div class="form-group">
+                <label for="know_languages">Programming Languages You Know:</label>
+                <input type="text" class="form-control form-control-light" id="know_languages" name="know_languages" required>
+            </div>
+            <div class="form-group">
+                <label for="learn_language">Programming Language You Want to Learn:</label>
+                <input type="text" class="form-control form-control-light" id="learn_language" name="learn_language" required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Years of Coding Experience:</label>
+                <input type="number" class="form-control form-control-light" id="experience" name="experience" required>
+            </div>
+            <div class="form-group">
+                <label for="projects">Personal Projects:</label>
+                <textarea class="form-control form-control-light" id="projects" name="projects" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="interests">Programming Interests:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="web" name="interest_web">
+                    <label class="form-check-label" for="web">Web Development</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="app" name="interest_app">
+                    <label class="form-check-label" for="app">Mobile App Development</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="ai" name="interest_ai">
+                    <label class="form-check-label" for="ai">Artificial Intelligence</label>
+                </div>
+            </div>
+            {% endif %}
+            <input type="hidden" name="course" value="{{ course }}">
+            <input type="hidden" name="name" value="{{ name }}">
+            <input type="hidden" name="email" value="{{ email }}">
+            <a type="button" class="btn btn-secondary mb-4" href="/">Previous</a>
+
+             <button type="submit" class="btn btn-primary mb-4">Submit</button>
+
+        </form>
+       
+        <!-- / Login Form -->
+
+      </div>
+    </div>
+    <!-- / Login Form-->
+
+  </section>
+
+
+</body>
+
+</html>
